@@ -26,6 +26,7 @@ export class CardController {
         try {
             const { id } = req.params;
             const data = req.body;
+            const image = req.file ? `/uploads/${req.file.filename}` : undefined;
 
             if (isNaN(id)) {
                 const error = "Invalid url params";
@@ -34,7 +35,7 @@ export class CardController {
             }
 
             console.log('Card update body : ', id, data);
-            await cardService.updateById(id, data);
+            await cardService.updateById(id, { ...data, imageUrl: image });
             res.status(200).json({ message: 'Card updated successfully' });
         } catch (error) {
             next(error);
