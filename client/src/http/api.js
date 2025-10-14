@@ -11,7 +11,8 @@ export const createCard = async (data) => {
 }
 
 export const updateCard = async (id, data) => {
-    const response = await api.put(`/card/${id}`, data);
+    console.log('data : ', data, id)
+    const response = await api.patch(`/card/${id}`, data);
     return response;
 }
 
