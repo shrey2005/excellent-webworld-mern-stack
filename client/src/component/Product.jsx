@@ -5,7 +5,7 @@ import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import { fetchCards, createCard, updateCard, deleteCard } from "../http/api";
 import ProductForm from "./ProductForm";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 export default function Product() {
     const [form] = Form.useForm();
@@ -79,7 +79,13 @@ export default function Product() {
                 {products?.map(product => (
                     <Col xs={24} sm={12} md={8} lg={6} key={product.id}>
                         <Card
-                            title={product.name}
+                            title={<Title strong>product.name</Title>}
+                            style={{
+                                borderRadius: '8px',
+                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                                padding: '16px',
+                                transition: 'transform 0.2s',
+                            }}
                             extra={
                                 <Space>
                                     <Button

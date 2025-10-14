@@ -15,7 +15,9 @@ const storage = multer.diskStorage({
     }
 });
 
-router.post('/add', async (req, res, next) => {
+const upload = multer({ storage });
+
+router.post('/add', upload.single('image'), async (req, res, next) => {
     await cardController.create(req, res, next);
 })
 

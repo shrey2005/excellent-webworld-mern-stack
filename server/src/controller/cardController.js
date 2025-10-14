@@ -5,7 +5,10 @@ export class CardController {
 
     async create(req, res, next) {
         try {
-            await cardService.create(req.body);
+            const { name, price, category, stock } = req.body;
+            const image = req.file ? `/uploads/${req.file.filename}` : undefined;
+
+            await cardService.create({ name, price, category, stock, imageUrl: image });
             res.status(201).json({ message: 'Card created successfully' });
         }
         catch (error) {
