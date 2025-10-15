@@ -32,8 +32,8 @@ export default function ProductForm() {
                             <Upload
                                 fileList={fileList}
                                 beforeUpload={(file) => {
-                                    setFileList([file]); // Allow only 1 file
-                                    return false; // Prevent auto upload
+                                    setFileList([file]);
+                                    return false;
                                 }}
                                 onRemove={() => setFileList([])}
                             >
